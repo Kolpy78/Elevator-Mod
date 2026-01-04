@@ -1,5 +1,8 @@
 package com.KillerStudios.ElevatorMod;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +16,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 @Mod(modid = ElevatorMod.MODID, version = Tags.VERSION, name = "ElevatorMod", acceptedMinecraftVersions = "[1.7.10]")
 public class ElevatorMod {
 
-    public static final String MODID = "EM";
+    public static final String MODID = "em";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
     @SidedProxy(clientSide = "com.KillerStudios.ElevatorMod.ClientProxy", serverSide = "com.KillerStudios.ElevatorMod.CommonProxy")
@@ -24,6 +27,8 @@ public class ElevatorMod {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+        Blocks.init();
+        Blocks.register();
     }
 
     @Mod.EventHandler
